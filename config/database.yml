@@ -52,4 +52,7 @@ production:
   <<: *default
   database: pointcard_campaign_info_production
   username: pointcard_campaign_info
-  password: <%= ENV["POINTCARD_CAMPAIGN_INFO_DATABASE_PASSWORD"] %>
+  password: <%= ENV['DB_PASSWORD'] %> # .envで設定
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
