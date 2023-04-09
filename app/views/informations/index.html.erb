@@ -1,0 +1,25 @@
+<div class= "background" >
+
+  <div class= "container">
+    <div class="row">
+      <div class="col-6 bg-warning bg-gradient">
+        <h2 class = "h2 text-primary">Tポイント</h2>
+        <% @t_texts.zip(@t_imgs, @t_links).each {|t_text , t_img , t_link| %>
+        <div class= "m-3">
+          <%= link_to image_tag(t_img[:src], class: "d-flex w-50 ratio ratio-4x3") , t_link[:href] %>
+          <%= link_to t_text.inner_text, t_link[:href] , class: "h5" %>
+        </div>
+        <% } %>
+      </div>
+
+
+      <div class="col-6 bg-danger">
+        <h2 class = "h2 text-white ">PayPay</h2>
+        <% @pay_texts.zip(@pay_imgs, @pay_links).each {|pay_text , pay_img , pay_link| %>
+        <div class= "m-3">
+          <%= link_to pay_text.inner_text, pay_link[:href], class: "h5 d-flex text-white" %>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
