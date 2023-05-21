@@ -82,3 +82,5 @@ group :production do
   # 環境変数の設定
   gem 'dotenv-rails'
 end
+
+gem 'selenium-webdriver', '~> 3.142'
