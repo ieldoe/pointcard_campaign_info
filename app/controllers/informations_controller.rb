@@ -16,8 +16,9 @@ class InformationsController < ApplicationController
 
 
    # ブラウザの指定(Chrome)
-    session = Selenium::WebDriver.for :chrome
-
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    session = Selenium::WebDriver.for :chrome, options: options
     session.manage.timeouts.implicit_wait = 30
 
     session.get('https://dpoint.docomo.ne.jp/campaign/')
@@ -26,7 +27,7 @@ class InformationsController < ApplicationController
     @d_imeges = session.find_elements(:xpath, '/html/body/div[1]/div[3]/section/ul/li/a/div[1]/img')
     @d_links = session.find_elements(:xpath, '/html/body/div[1]/div[3]/section/ul/li/a')
 
-    session.quit
+
 
 
 
