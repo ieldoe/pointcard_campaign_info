@@ -1,0 +1,2 @@
+class Tpoint < ApplicationRecord
+end
