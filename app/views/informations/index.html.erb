@@ -17,7 +17,7 @@
         <h2 class = "h2 text-white ">PayPay</h2>
         <% @pay_texts.zip(@pay_imgs, @pay_links).each {|pay_text , pay_img , pay_link| %>
         <div class= "m-3">
-          <%  link_to image_tag(pay_img[:src], class: "d-flex w-50 ratio ratio-4x3") , pay_link[:href] %>
+          <%=  link_to image_tag(pay_img[:src], class: "d-flex w-50 ratio ratio-4x3") , pay_link[:href] %>
           <%= link_to pay_text.inner_text, pay_link[:href], class: "h5 d-flex text-white" %>
         </div>
       <% } %>

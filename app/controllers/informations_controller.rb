@@ -13,9 +13,6 @@ class InformationsController < ApplicationController
     @pay_texts = paypaypage.search('.articleList__contents')
     @pay_imgs = paypaypage.search('.articleList__image')
 
-
-
-   # ブラウザの指定(Chrome)
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
     session = Selenium::WebDriver.for :chrome, options: options
@@ -29,12 +26,13 @@ class InformationsController < ApplicationController
 
 
 
+   # ブラウザの指定(Chrome)
+    #options = Selenium::WebDriver::Chrome::Options.new
+    #options.add_argument('--headless')
+    #session = Selenium::WebDriver.for :chrome
+    #session.manage.timeouts.implicit_wait = 30
 
-
-    # ページ遷移する
-
-    #session.execute_script("window.open('https://paypay.ne.jp/event/')") #make new tab
-    #session.switch_to.window(session.window_handles[1]) #switch new tab
+    #session.get('https://paypay.ne.jp/event/')
 
     #source  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[11]/a/div[1]/div/img')
     #target  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[11]/a/div[1]/div/img')
@@ -53,13 +51,7 @@ class InformationsController < ApplicationController
 #移動元の要素をドラッグし移動先の要素へカーソル移動
     #session.action.click_and_hold(source).move_to(target).perform
 
-     #binding.break
 
-
-
-
-
-
-
+    #@pay_imgs =  session.find_elements(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li/a/div[1]/div/img')
   end
 end
