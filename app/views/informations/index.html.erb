@@ -1,37 +1,40 @@
 <div class= "background" >
-
   <div class= "container">
     <div class="row">
       <div class="col-4 bg-warning bg-gradient">
         <h2 class = "h2 text-primary">Tポイント</h2>
-        <% @t_texts.zip(@t_imgs, @t_links).each {|t_text , t_img , t_link| %>
+        <% @tpoints.each do |tpoint| %>
         <div class= "m-3">
-          <%= link_to image_tag(t_img[:src], class: "d-flex w-50 ratio ratio-4x3") , t_link[:href] %>
-          <%= link_to t_text.inner_text, t_link[:href] , class: "h5" %>
+          <%= link_to image_tag(tpoint.t_image , class: "d-flex w-50 ratio ratio-4x3") , tpoint.t_link %>
+          <%= link_to tpoint.t_info , tpoint.t_link , class: "h5" %>
         </div>
-        <% } %>
+        <% end %>
       </div>
 
 
       <div class="col-4 bg-danger">
         <h2 class = "h2 text-white ">PayPay</h2>
-        <% @pay_texts.zip(@pay_imgs, @pay_links).each {|pay_text , pay_img , pay_link| %>
+        <% @pay_info.zip(@pay_images)  do |pay_info, pay_image| %>
         <div class= "m-3">
-          <%=  link_to image_tag(pay_img[:src], class: "d-flex w-50 ratio ratio-4x3") , pay_link[:href] %>
-          <%= link_to pay_text.inner_text, pay_link[:href], class: "h5 d-flex text-white" %>
+          <%= link_to image_tag(pay_image.p_src, class: "d-flex w-50 ratio ratio-4x3") ,  pay_info.p_link %>
+          <%= link_to pay_info.p_info , pay_info.p_link , class: "h5 d-flex text-white"  %>
         </div>
-      <% } %>
-    </div>
+        <% end %>
+      </div>
 
 
-    <div class="col-4 bg-success">
+      <div class="col-4 bg-success">
         <h2 class = "h2 text-white ">Dポイント</h2>
-        <% @d_texts.zip(@d_imeges, @d_links).each {|d_text , d_img , d_link| %>
+        <% @dpoints.each do |dpoint| %>
         <div class= "m-3">
-          <%= link_to image_tag(d_img.attribute(:src), class: "d-flex w-50 ratio ratio-4x3") , d_link[:href] %>
-          <%= link_to d_link.text, d_link.attribute(:href), class: "h5 d-flex text-white" %>
+          <%= link_to image_tag(dpoint.d_image, class: "d-flex w-50 ratio ratio-4x3") , dpoint.d_link %>
+          <%= link_to dpoint.d_info , dpoint.d_link, class: "h5 d-flex text-white"  %>
+          <%= link_to dpoint.d_timeline , dpoint.d_link, class: "h5 d-flex text-white" %>
         </div>
-      <% } %>
+        <% end %>
+      </div>
+
+
     </div>
   </div>
 </div>

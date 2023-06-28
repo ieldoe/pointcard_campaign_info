@@ -74,6 +74,7 @@ GEM
       msgpack (~> 1.2)
     builder (3.2.4)
     childprocess (3.0.0)
+    chronic (0.10.2)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.0)
     crass (1.0.6)
@@ -257,6 +258,8 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
     zeitwerk (2.6.8)
 
 PLATFORMS
@@ -285,6 +288,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
+  whenever
 
 RUBY VERSION
    ruby 3.1.2p20

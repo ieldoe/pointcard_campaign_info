@@ -9,12 +9,12 @@ namespace :point_task do
     @t_texts = tpage.search('.list-item')
 
     @t_texts.zip(@t_imgs, @t_links).each do |t_text, t_img, t_link|
-      Pointinfo.create(t_info: t_text.inner_text, t_image: t_img[:src], t_link: t_link[:href])
+      Tpoint.create(t_info: t_text.inner_text, t_image: t_img[:src], t_link: t_link[:href])
     end
   end
 
   task d_point_create: :environment do
-    Dpointinfo.destroy_all
+    Dpoint.destroy_all
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
     session = Selenium::WebDriver.for(:chrome, options:)
