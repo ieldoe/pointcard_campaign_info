@@ -18,3 +18,27 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+## config/schedule.rb
+
+# Rails.root(Railsメソッド)を使用するために必要
+require File.expand_path(File.dirname(__FILE__) + "/environment")
+
+# cronを実行する環境変数
+# 環境変数ENV['RAILS_ENV']にセットされている変数または:developmentを指定
+# 自分の環境でENV['RAILS_ENV']にすでにdevelopmentがセットされていた
+rails_env = ENV['RAILS_ENV'] || :development
+
+# cronを実行する環境変数をセット
+set :environment, rails_env
+
+# cron.logの出力先を指定している
+# Rails.rootはこのアプリのルート階層が返される
+set :output, "#{Rails.root}/log/cron.log"
+
+
+every 1.minutes do
+  rake 'point_task:t_point_create'
+  rake 'point_task:d_point_create'
+  rake 'point_task:pay_point_create'
+end
