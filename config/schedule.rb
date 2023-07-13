@@ -19,23 +19,14 @@
 
 # Learn more: http://github.com/javan/whenever
 
-## config/schedule.rb
-
-# Rails.root(Railsメソッド)を使用するために必要
-require File.expand_path(File.dirname(__FILE__) + "/environment")
-
-# cronを実行する環境変数
-# 環境変数ENV['RAILS_ENV']にセットされている変数または:developmentを指定
-# 自分の環境でENV['RAILS_ENV']にすでにdevelopmentがセットされていた
+require File.expand_path(File.dirname(__FILE__) + '/environment')
+set :path_env, ENV['PATH']
+set      :job_template, "source $HOME/.zshrc; $(which zsh) -l -c ':job'"
+job_type :rake, "source /Users/mitsuyashouta/.zshrc; export PATH=\"$HOME/.rbenv/bin:$PATH\"; eval \"$(rbenv init -)\"; cd :path && RAILS_ENV=:environment bundle exec rake :task :output"
+job_type :runner,       "cd :path && bundle exec rails runner -e :environment ':task' :output"
 rails_env = ENV['RAILS_ENV'] || :development
-
-# cronを実行する環境変数をセット
-set :environment, rails_env
-
-# cron.logの出力先を指定している
-# Rails.rootはこのアプリのルート階層が返される
 set :output, "#{Rails.root}/log/cron.log"
-
+set :environment, rails_env
 
 every 1.minutes do
   rake 'point_task:t_point_create'
