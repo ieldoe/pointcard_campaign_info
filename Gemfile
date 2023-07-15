@@ -84,3 +84,5 @@ group :production do
 end
 
 gem 'selenium-webdriver', '~> 3.142'
+
+gem "whenever" , require: false

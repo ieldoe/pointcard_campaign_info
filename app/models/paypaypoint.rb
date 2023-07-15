@@ -1,0 +1,2 @@
+class Paypaypoint < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class Paypayimage < ApplicationRecord
+end
