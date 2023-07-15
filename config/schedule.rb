@@ -28,7 +28,7 @@ rails_env = ENV['RAILS_ENV'] || :development
 set :output, "#{Rails.root}/log/cron.log"
 set :environment, rails_env
 
-every 1.minutes do
+every :friday, at: '12pm' do
   rake 'point_task:t_point_create'
   rake 'point_task:d_point_create'
   rake 'point_task:pay_point_create'
