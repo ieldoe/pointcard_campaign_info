@@ -85,4 +85,4 @@ end
 
 gem 'selenium-webdriver', '~> 3.142'
 
-gem "whenever" , require: false
+gem 'whenever', require: false
