@@ -76,12 +76,6 @@ end
 
 gem 'mechanize'
 
-group :production do
-  # Use PstgreSQL as the database for Active Record
-  gem 'pg'
-  # 環境変数の設定
-  gem 'dotenv-rails'
-end
 
 gem 'selenium-webdriver', '~> 3.142'
 
