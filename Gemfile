@@ -10,7 +10,19 @@ gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
 gem 'sprockets-rails'
 
 # Use mysql as the database for Active Record
-gem 'mysql2', '~> 0.5'
+#  gem 'mysql2', '~> 0.5'
+
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'mysql2', '~> 0.5' # <= 開発環境とテスト環境用として設定
+end
+
+# 本番環境用のgemグループを新しく作成しPostgresを指定
+group :production do
+  gem 'pg'
+end
+
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
