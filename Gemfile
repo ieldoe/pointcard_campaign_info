@@ -89,6 +89,7 @@ end
 gem 'mechanize'
 
 
-gem 'selenium-webdriver'
+gem 'selenium-webdriver', '~> 4.9'
+
 
 gem 'whenever', require: false
