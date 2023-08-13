@@ -31,6 +31,7 @@ namespace :point_task do
                     d_timeline: d_time.text)
     end
 
+
     session.quit
   end
 
