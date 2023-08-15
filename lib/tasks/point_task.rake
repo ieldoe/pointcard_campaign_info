@@ -31,7 +31,6 @@ namespace :point_task do
                     d_timeline: d_time.text)
     end
 
-
     session.quit
   end
 
@@ -99,20 +98,15 @@ namespace :point_task do
 
     sleep(3)
 
+    @pay_imgs = session.find_elements(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li/a/div[1]/div/img')
 
-    @pay_imgs =  session.find_elements(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li/a/div[1]/div/img')
-
-     @pay_imgs.each do |pay_img|
+    @pay_imgs.each do |pay_img|
       Paypayimage.create(p_src: pay_img.attribute('src'))
     end
 
-
-
-
-
     @pay_imgs1 = session.find_elements(:xpath, '/html/body/div[1]/div[3]/div[1]/div[2]/div/ul/li/a/div[1]/div/img')
 
-    if  !@pay_imgs1.empty?
+    unless @pay_imgs1.empty?
 
       @pay_imgs1.each do |pay_img|
         Paypayimage.create(p_src: pay_img.attribute('src'))
