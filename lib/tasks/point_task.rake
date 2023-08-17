@@ -102,7 +102,7 @@ namespace :point_task do
 
     @pay_imgs1 = session.find_elements(:xpath, '/html/body/div[1]/div[3]/div[1]/div[2]/div/ul/li/a/div[1]/div/img')
 
-    unless @pay_imgs1.empty?
+    if !@pay_imgs1.empty?
 
       @pay_imgs1.each do |pay_img|
         Paypayimage.create(p_src: pay_img.attribute('src'))
