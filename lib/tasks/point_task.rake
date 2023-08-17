@@ -18,7 +18,7 @@ namespace :point_task do
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
     session = Selenium::WebDriver.for(:chrome, options:)
-    session.manage.timeouts.implicit_wait = 30
+    session.manage.timeouts.implicit_wait = 5
     session.get('https://dpoint.docomo.ne.jp/campaign/')
 
     @d_texts = session.find_elements(:xpath, '/html/body/div[1]/div[3]/section/ul/li/a/div[2]/div[2]/p')
@@ -50,55 +50,60 @@ namespace :point_task do
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
     session = Selenium::WebDriver.for(:chrome, options:)
-    session.get('https://paypay.ne.jp/event/')
+   session.get('https://paypay.ne.jp/event/')
 
-    source  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[4]/a/div[1]/div/img')
-    target  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[4]/a/div[1]/div/img')
 
-    # 3秒間待機して移動前の位置を確認
-    sleep(3)
-    # 移動元の要素をドラッグし移動先の要素へカーソル移動
-    session.action.click_and_hold(source)
-           .move_to(target)
-           .perform
 
-    source  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[8]/a/div[1]/div/img')
-    target  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[8]/a/div[1]/div/img')
 
-    # 3秒間待機して移動前の位置を確認
-    sleep(3)
-    # 移動元の要素をドラッグし移動先の要素へカーソル移動
-    session.action.click_and_hold(source)
-           .move_to(target)
-           .perform
 
-    source  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[11]/a/div[1]/div/img')
-    target  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[11]/a/div[1]/div/img')
 
-    session.action.click_and_hold(source)
-           .move_to(target)
-           .perform
+source  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[2]/a/div[1]/div/img')
+target  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[2]/a/div[1]/div/img')
 
-    source  = session.find_element(:xpath, '/html/body/div[1]/div[3]/div[1]/div[2]/div/div')
-    target  = session.find_element(:xpath, '/html/body/div[1]/div[3]/div[1]/div[2]/div/div')
 
-    # 3秒間待機して移動前の位置を確認
-    sleep(3)
-    # 移動元の要素をドラッグし移動先の要素へカーソル移動
-    session.action.click_and_hold(source)
-           .move_to(target)
-           .perform
+#3秒間待機して移動前の位置を確認
+sleep(3)
+#移動元の要素をドラッグし移動先の要素へカーソル移動
+session.action.click_and_hold(source).
+              move_to(target).
+              perform
 
-    source  = session.find_element(:xpath, '//*[@id="previous"]')
-    target  = session.find_element(:xpath, '//*[@id="previous"]')
+source  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[8]/a/div[1]/div/img')
+target  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[8]/a/div[1]/div/img')
 
-    session.action.click_and_hold(source)
-           .move_to(target)
-           .perform
+#3秒間待機して移動前の位置を確認
+sleep(3)
+#移動元の要素をドラッグし移動先の要素へカーソル移動
+session.action.click_and_hold(source).
+              move_to(target).
+              perform
 
-    sleep(3)
 
-    @pay_imgs = session.find_elements(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li/a/div[1]/div/img')
+source  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[11]/a/div[1]/div/img')
+target  = session.find_element(:xpath, '//*[@id="pagetop"]/div[3]/div[1]/div[1]/div/ul[2]/li[11]/a/div[1]/div/img')
+
+#3秒間待機して移動前の位置を確認
+sleep(3)
+#移動元の要素をドラッグし移動先の要素へカーソル移動
+session.action.click_and_hold(source).
+              move_to(target).
+              perform
+
+
+source  = session.find_element(:xpath, '//*[@id="pagetop"]/footer/div[1]/p')
+target  = session.find_element(:xpath, '//*[@id="pagetop"]/footer/div[1]/p')
+
+#3秒間待機して移動前の位置を確認
+sleep(3)
+#移動元の要素をドラッグし移動先の要素へカーソル移動
+session.action.click_and_hold(source).
+              move_to(target).
+              perform
+
+
+sleep(3)
+
+    @pay_imgs = session.find_elements(:xpath, '/html/body/div[1]/div[3]/div[1]/div[1]/div/ul[2]/li/a/div[1]/div/img')
 
     @pay_imgs.each do |pay_img|
       Paypayimage.create(p_src: pay_img.attribute('src'))
@@ -106,7 +111,7 @@ namespace :point_task do
 
     @pay_imgs1 = session.find_elements(:xpath, '/html/body/div[1]/div[3]/div[1]/div[2]/div/ul/li/a/div[1]/div/img')
 
-    unless @pay_imgs1.empty?
+    if !@pay_imgs1.empty?
 
       @pay_imgs1.each do |pay_img|
         Paypayimage.create(p_src: pay_img.attribute('src'))
