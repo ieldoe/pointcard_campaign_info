@@ -89,6 +89,6 @@ gem 'mechanize'
 
 gem 'selenium-webdriver', '~> 4.9'
 
-gem 'chromedriver-helper'
+gem 'webdrivers', '~> 5.0', require: false
 
 gem 'whenever', require: false
