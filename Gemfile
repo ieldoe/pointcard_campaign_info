@@ -95,3 +95,5 @@ gem 'whenever', require: false
 
 
 gem "meta-tags"
+
+gem 'config'
