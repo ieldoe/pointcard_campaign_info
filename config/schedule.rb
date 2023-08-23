@@ -33,3 +33,7 @@ every :friday, at: '12pm' do
   rake 'point_task:d_point_create'
   rake 'point_task:pay_point_create'
 end
+
+every 1.day, :at => '5:00 am' do
+  rake "-s sitemap:refresh"
+end
