@@ -60,6 +60,12 @@ namespace :point_task do
     session.get('https://dpoint.docomo.ne.jp/campaign/')
 
     session.get('https://paypay.ne.jp/event/')
+    session.execute_script('window.scrollTo(0, 250);')
+    sleep(3)
+    session.execute_script('window.scrollTo(0, 500);')
+    sleep(3)
+    session.execute_script('window.scrollTo(0, 750);')
+    sleep(3)
     session.execute_script('window.scrollTo(0, 1000);')
     sleep(3)
 
