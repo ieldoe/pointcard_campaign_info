@@ -93,8 +93,7 @@ gem 'webdrivers', '~> 5.0', require: false
 
 gem 'whenever', require: false
 
-
-gem "meta-tags"
+gem 'meta-tags'
 
 gem 'config'
 

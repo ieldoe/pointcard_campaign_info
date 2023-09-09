@@ -19,11 +19,10 @@ namespace :point_task do
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
-    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument('--disable-dev-shm-usage')
     session = Selenium::WebDriver.for(:chrome, options:)
     session.manage.timeouts.implicit_wait = 5
     session.get('https://dpoint.docomo.ne.jp/campaign/')
-
 
     @d_texts = session.find_elements(:xpath, '/html/body/div[1]/div[3]/section/ul/li/a/div[2]/div[2]/p')
     @d_imeges = session.find_elements(:xpath, '/html/body/div[1]/div[3]/section/ul/li/a/div[1]/img')
@@ -34,7 +33,6 @@ namespace :point_task do
       Dpoint.create(d_info: d_text.text, d_image: d_img.attribute('src'), d_link: d_link.attribute('href'),
                     d_timeline: d_time.text)
     end
-
     session.quit
   end
 
@@ -51,10 +49,10 @@ namespace :point_task do
     end
 
     # ブラウザの指定(Chrome)
-   options = Selenium::WebDriver::Chrome::Options.new
+    options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
-    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument('--disable-dev-shm-usage')
     session = Selenium::WebDriver.for(:chrome, options:)
     session.manage.timeouts.implicit_wait = 5
     session.get('https://dpoint.docomo.ne.jp/campaign/')
@@ -77,7 +75,7 @@ namespace :point_task do
 
     @pay_imgs1 = session.find_elements(:xpath, '/html/body/div[1]/div[3]/div[1]/div[2]/div/ul/li/a/div[1]/div/img')
 
-    if !@pay_imgs1.empty?
+    !@pay_imgs1.empty?
 
       @pay_imgs1.each do |pay_img|
         Paypayimage.create(p_src: pay_img.attribute('src'))
